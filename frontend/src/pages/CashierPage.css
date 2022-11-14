@@ -1,0 +1,7 @@
+.ant-tabs-tab-btn, .ant-tabs-tab-remove {
+  margin: 0 auto;
+}
+
+.ant-tabs-content-holder {
+  overflow: scroll;
+}

@@ -1,0 +1,1894 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Mongo Magic Wait Management API",
+    "description": "Server that powers the Wait Management frontend"
+  },
+  "tags": [
+    {
+      "name": "User Auth",
+      "description": "Managing user authentication and authorisation"
+    },
+    {
+      "name": "Menu Management",
+      "description": "Managing menu items"
+    },
+    {
+      "name": "Order Management",
+      "description": "Managing order items"
+    },
+    {
+      "name": "Site Management",
+      "description": "Managing site data"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "AuthToken": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string",
+            "description": "Authorization Bearer Token"
+          }
+        }
+      }
+    },
+    "fields": {
+      "UserName": {
+        "type": "string",
+        "description": "User's name",
+        "example": "John Doe"
+      },
+      "CompanyName": {
+        "type": "string",
+        "description": "Company name",
+        "example": "Acme Inc."
+      },
+      "Email": {
+        "type": "string",
+        "example": "christian@unsw.edu.au",
+        "description": "Email address of the user attempting to login"
+      },
+      "Password": {
+        "type": "string",
+        "description": "Password of the user attempting to login",
+        "example": "adummypassword"
+      },
+      "AdminPin": {
+        "type": "string",
+        "description": "The password for admin access to the system",
+        "example": "ffnq34fiu43ng"
+      },
+      "ItemName": {
+        "type": "string",
+        "description": "The name of new menu item",
+        "example": "Bacon egg roll"
+      },
+      "ItemCategory": {
+        "type": "string",
+        "description": "The category of the new menu item",
+        "example": "Food"
+      },
+      "Price": {
+        "type": "string",
+        "description": "The sale price of the new menu item",
+        "example": "5.00"
+      },
+      "ItemDescription": {
+        "type": "string",
+        "description": "The description of the new menu item",
+        "example": "Bread, Bacon, Egg"
+      },
+      "ItemID": {
+        "type": "string",
+        "description": "The item ID of the menu item",
+        "example": "6353bb160df5c923ee90f063"
+      },
+      "Dietary": {
+        "type": "array",
+        "description": "The dietary requirements of the new menu item",
+        "example": [
+          "Gluten Free",
+          "Vegan"
+        ]
+      },
+      "Thumbnail": {
+        "type": "string",
+        "description": "The url of the thumbnail image of the new menu item",
+        "example": "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+      },
+      "Language": {
+        "type": "array",
+        "description": "The languages the new menu item is available in",
+        "example": [
+          "ja",
+          "ko"
+        ]
+      },
+      "MenuOptions": {
+        "type": "array",
+        "description": "The menu options of the new menu item",
+        "example": [
+          "Option 1",
+          "Option 2"
+        ]
+      },
+      "Category": {
+        "type": "object",
+        "properties": {
+          "food": {
+            "type": "array",
+            "items": null,
+            "example": null
+          },
+          "drink": {
+            "type": "array",
+            "items": null,
+            "example": null
+          },
+          "entree": {
+            "type": "array",
+            "items": null,
+            "example": null
+          }
+        }
+      },
+      "CompanyInfo": {
+        "type": "object",
+        "properties": {
+          "siteName": {
+            "type": "string",
+            "example": "Haijing Cafe"
+          },
+          "phone": {
+            "type": "string",
+            "example": 288888888
+          },
+          "streetAddress": {
+            "type": "string",
+            "example": "250 Anzac Pde"
+          },
+          "cityOrSuburb": {
+            "type": "string",
+            "example": "Kingsford"
+          },
+          "state": {
+            "type": "string",
+            "example": "NSW"
+          },
+          "postcode": {
+            "type": "string",
+            "example": 2032
+          }
+        }
+      },
+      "Menu1": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "63460055316ae3dfb64ad677"
+          },
+          "itemName": {
+            "type": "string",
+            "example": "Bacon egg roll"
+          },
+          "category": {
+            "type": "string",
+            "example": "Food"
+          },
+          "price": {
+            "type": "string",
+            "example": 5
+          },
+          "description": {
+            "type": "string",
+            "example": "Bread, Bacon, Egg"
+          },
+          "dietary": {
+            "type": "array",
+            "items": null,
+            "example": [
+              "vegan",
+              "Gluten Free"
+            ]
+          },
+          "email": {
+            "type": "string",
+            "example": "christian@unsw.edu.au"
+          },
+          "translationLanguage": {
+            "type": "array",
+            "items": null,
+            "example": [
+              "ja",
+              "ko"
+            ]
+          },
+          "options": {
+            "type": "array",
+            "description": "The menu options of the new menu item",
+            "items": null,
+            "example": [
+              "Option 1",
+              "Option 2"
+            ]
+          },
+          "userId": {
+            "type": "string",
+            "example": "6343c404adfe757095fddc17"
+          },
+          "createdAt": {
+            "type": "date",
+            "example": "2022-10-12T00:16:18.235Z"
+          },
+          "__v": {
+            "type": "integer",
+            "example": 0
+          }
+        }
+      },
+      "Menu": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/fields/Menu1"
+        }
+      },
+      "siteId": {
+        "type": "string",
+        "example": "63395c6523937d828468ecd3"
+      },
+      "posmenu": {
+        "type": "object",
+        "properties": {
+          "default": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/fields/Menu1"
+            }
+          },
+          "food": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/fields/Menu1"
+            }
+          }
+        }
+      },
+      "order1": {
+        "type": "object",
+        "properties": {
+          "item": {
+            "type": "string",
+            "example": "Bacon egg roll"
+          },
+          "quantity": {
+            "type": "string",
+            "example": 1
+          },
+          "extras": {
+            "type": "array",
+            "items": null,
+            "example": [
+              "Option 1",
+              "Option 2"
+            ]
+          },
+          "price": {
+            "type": "string",
+            "example": 14
+          }
+        }
+      },
+      "order": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/fields/order1"
+        }
+      },
+      "orderInfo": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "example": "636763d602911e1d6dd9c251"
+          },
+          "siteId": {
+            "type": "string",
+            "example": "63395c6523937d828468ecd3"
+          },
+          "tableNumber": {
+            "type": "string",
+            "example": 8
+          },
+          "order": {
+            "$ref": "#/components/fields/order"
+          },
+          "isPaid": {
+            "type": "boolean",
+            "default": false
+          },
+          "isCompleted": {
+            "type": "boolean",
+            "default": false
+          },
+          "addOn": {
+            "type": "array",
+            "items": null,
+            "example": []
+          },
+          "totalPrice": {
+            "type": "string",
+            "example": 14
+          },
+          "createdAt": {
+            "type": "date",
+            "example": "2022-10-12T00:16:18.235Z"
+          },
+          "__v": {
+            "type": "string",
+            "example": 0
+          }
+        }
+      }
+    },
+    "parameters": {
+      "Authorization": {
+        "name": "Authorization",
+        "in": "header",
+        "schema": {
+          "type": "string",
+          "example": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Inp6QHp6LmNvbSIsImlhdCI6MTY2NjQzMTY0OSwiZXhwIjoxNjc1MDcxNjQ5fQ._YydPfJdY9OqeQWeQNBvMR2ATmrMQiDtiIpvCJk_qu8"
+        },
+        "required": true,
+        "description": "Bearer [token]"
+      },
+      "Params": {
+        "name": "Params",
+        "in": "header",
+        "schema": {
+          "type": "string",
+          "example": "6343c404adfe757095fddc17"
+        },
+        "required": true,
+        "description": "KEY [id]"
+      },
+      "AuthRegisterBody": {
+        "name": "Register info",
+        "in": "body",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "userName": {
+              "$ref": "#/components/fields/UserName"
+            },
+            "companyName": {
+              "$ref": "#/components/fields/CompanyName"
+            },
+            "email": {
+              "$ref": "#/components/fields/Email"
+            },
+            "password": {
+              "$ref": "#/components/fields/Password"
+            },
+            "adminPin": {
+              "$ref": "#/components/fields/AdminPin"
+            }
+          }
+        }
+      },
+      "AuthLoginBody": {
+        "name": "Login info",
+        "in": "body",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "$ref": "#/components/fields/Email"
+            },
+            "password": {
+              "$ref": "#/components/fields/Password"
+            }
+          }
+        }
+      },
+      "AuthAdminPinBody": {
+        "name": "Login info",
+        "in": "body",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "adminPin": {
+              "$ref": "#/components/fields/AdminPin"
+            }
+          }
+        }
+      },
+      "VerifyPasswordBody": {
+        "name": "Login info",
+        "in": "body",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "password": {
+              "$ref": "#/components/fields/Password"
+            }
+          }
+        }
+      },
+      "UpdateProfileBody": {
+        "name": "Profile info",
+        "in": "body",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "userName": {
+              "$ref": "#/components/fields/UserName"
+            },
+            "companyName": {
+              "$ref": "#/components/fields/CompanyName"
+            },
+            "email": {
+              "$ref": "#/components/fields/Email"
+            },
+            "password": {
+              "$ref": "#/components/fields/Password"
+            },
+            "adminPin": {
+              "$ref": "#/components/fields/AdminPin"
+            }
+          }
+        }
+      },
+      "MenuCreateBody": {
+        "name": "Menu item info",
+        "in": "body",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "itemName": {
+              "$ref": "#/components/fields/ItemName"
+            },
+            "category": {
+              "$ref": "#/components/fields/ItemCategory"
+            },
+            "price": {
+              "$ref": "#/components/fields/Price"
+            },
+            "description": {
+              "$ref": "#/components/fields/ItemDescription"
+            },
+            "dietary": {
+              "$ref": "#/components/fields/Dietary"
+            },
+            "translationLanguage": {
+              "$ref": "#/components/fields/Language"
+            },
+            "options": {
+              "$ref": "#/components/fields/MenuOptions"
+            }
+          }
+        }
+      },
+      "deleteItemBody": {
+        "name": "Menu item info",
+        "in": "body",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "$ref": "#/components/fields/ItemID"
+            }
+          }
+        }
+      },
+      "addCategoryBody": {
+        "name": "Menu item info",
+        "in": "body",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "$ref": "#/components/fields/Email"
+            },
+            "category": {
+              "$ref": "#/components/fields/Category"
+            }
+          }
+        }
+      },
+      "createOrderBody": {
+        "name": "Order item info",
+        "in": "body",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "siteId": {
+              "$ref": "#/components/fields/siteId"
+            },
+            "tableNumber": {
+              "type": "string",
+              "example": 8
+            },
+            "order": {
+              "$ref": "#/components/fields/order"
+            },
+            "totalPrice": {
+              "type": "string",
+              "example": 14
+            }
+          }
+        }
+      },
+      "updateOrderBody": {
+        "name": "Order item info",
+        "in": "body",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "orderId": {
+              "type": "string",
+              "example": "636763d602911e1d6dd9c251"
+            },
+            "addOn": {
+              "$ref": "#/components/fields/order"
+            },
+            "totalPrice": {
+              "type": "string",
+              "example": 14
+            }
+          }
+        }
+      },
+      "paidOrderBody": {
+        "name": "Order item info",
+        "in": "body",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "orderId": {
+              "type": "string",
+              "example": "636763d602911e1d6dd9c251"
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "Token": {
+          "description": "OK",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "token": {
+                "type": "string",
+                "description": "JWT Token to provide authorisation",
+                "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNocmlzdGlhbkB1bnN3LmVkdS5hdSIsImlhdCI6MTY2NTQ0NTkzMSwiZXhwIjoxNjc0MDg1OTMxfQ.NaOt2z6-eglWNXUJBxMe62_ORj5Q8YUmRQMwNclFJ-Q"
+              }
+            }
+          }
+        },
+        "Empty": {
+          "description": "OK",
+          "schema": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "adminpin": {
+          "description": "Enter the correct adminPin",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Successful",
+                "example": "Successful"
+              }
+            }
+          }
+        },
+        "verifyPassword": {
+          "description": "Verify Password",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Correct password",
+                "example": "Correct password"
+              }
+            }
+          }
+        },
+        "getProfile": {
+          "description": "OK",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "_id": {
+                "type": "string",
+                "example": "63395c6523937d828468ecd3"
+              },
+              "userName": {
+                "type": "string",
+                "example": "hj1"
+              },
+              "companyName": {
+                "type": "string",
+                "example": "Starbox"
+              },
+              "email": {
+                "type": "string",
+                "example": "999@123.com"
+              },
+              "passwordEncoded": {
+                "type": "string",
+                "example": "202cb962ac59075b964b07152d234b70"
+              },
+              "adminPin": {
+                "type": "string",
+                "example": 123456
+              },
+              "createdAt": {
+                "type": "date",
+                "example": "2022-10-02T09:39:49.472Z"
+              },
+              "__v": {
+                "type": "integer",
+                "example": 0
+              },
+              "profilePhoto": {
+                "type": "string",
+                "example": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/"
+              },
+              "companyInfo": {
+                "$ref": "#/components/fields/CompanyInfo"
+              }
+            }
+          }
+        },
+        "updateProfile": {
+          "description": "OK",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "example": "User updated successfully"
+              }
+            }
+          }
+        },
+        "Create_menu": {
+          "description": "OK",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Successful",
+                "example": "Menu created"
+              }
+            }
+          }
+        },
+        "getMenu": {
+          "description": "OK",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "menu": {
+                "$ref": "#/components/fields/Menu"
+              },
+              "companyInfo": {
+                "$ref": "#/components/fields/CompanyInfo"
+              },
+              "companyName": {
+                "$ref": "#/components/fields/CompanyName"
+              }
+            }
+          }
+        },
+        "deleteitem": {
+          "description": "OK",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Successful",
+                "example": "Item deleted"
+              }
+            }
+          }
+        },
+        "addCategory": {
+          "description": "OK",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Successful",
+                "example": "Category updated"
+              }
+            }
+          }
+        },
+        "getCategory": {
+          "description": "OK",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "companyInfo": {
+                "$ref": "#/components/fields/CompanyInfo"
+              },
+              "menu": {
+                "$ref": "#/components/fields/Menu"
+              }
+            }
+          }
+        },
+        "siteid": {
+          "description": "OK",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "siteId": {
+                "$ref": "#/components/fields/siteId"
+              }
+            }
+          }
+        },
+        "posmenu": {
+          "description": "OK",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "category": {
+                "$ref": "#/components/fields/posmenu"
+              },
+              "sitedId": {
+                "$ref": "#/components/fields/siteId"
+              },
+              "tableRange": {
+                "type": "array",
+                "items": null,
+                "example": [
+                  6,
+                  70
+                ]
+              }
+            }
+          }
+        },
+        "updatemenu": {
+          "description": "OK",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Successful",
+                "example": "Menu updated"
+              }
+            }
+          }
+        },
+        "createorder": {
+          "description": "OK",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Successful",
+                "example": "Order created successfully"
+              },
+              "orderId": {
+                "type": "string",
+                "example": "636763d602911e1d6dd9c251"
+              }
+            }
+          }
+        },
+        "updateorder": {
+          "description": "OK",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Successful",
+                "example": "Order updated successfully"
+              }
+            }
+          }
+        },
+        "paidorder": {
+          "description": "OK",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Successful",
+                "example": "Order paid successfully"
+              }
+            }
+          }
+        },
+        "finshoneorder": {
+          "description": "OK",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Successful",
+                "example": "Order completed successfully"
+              }
+            }
+          }
+        },
+        "getoneorder": {
+          "description": "OK",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "order": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/fields/orderInfo"
+                }
+              }
+            }
+          }
+        },
+        "getsite": {
+          "description": "OK",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "totalSales": {
+                "type": "float",
+                "example": 36
+              },
+              "bestHour": {
+                "type": "string",
+                "example": 12
+              },
+              "bestHourSales": {
+                "type": "float",
+                "example": 36
+              },
+              "orderCount": {
+                "type": "float",
+                "example": 1
+              },
+              "avgSales": {
+                "type": "string",
+                "example": 36
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Bad Request",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "string",
+              "description": "Error message returned from server",
+              "example": "Invalid input"
+            }
+          }
+        },
+        "register": {
+          "description": "Bad Request",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message returned from server",
+                "example": "User already exists"
+              }
+            }
+          }
+        },
+        "login": {
+          "description": "Bad Request",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message returned from server",
+                "example": "Invalid email or password"
+              }
+            }
+          }
+        },
+        "adminpin": {
+          "description": "Enter the incorrect adminPin",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message returned from server",
+                "example": "Invalid adminPin"
+              }
+            }
+          }
+        },
+        "verifyPassword": {
+          "description": "Verify Password",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message returned from server",
+                "example": "Invalid password"
+              }
+            }
+          }
+        },
+        "getProfile": {
+          "description": "Get profile",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message returned from server",
+                "example": "User does not exist"
+              }
+            }
+          }
+        },
+        "Create_menu": {
+          "description": "Bad Request",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message returned from server",
+                "example": "Invild token"
+              }
+            }
+          }
+        },
+        "getMenu": {
+          "description": "Bad Request",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message returned from server",
+                "example": "Menu is not available"
+              }
+            }
+          }
+        },
+        "deleteitem": {
+          "description": "Bad Request",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message returned from server",
+                "example": "Menu not found"
+              }
+            }
+          }
+        },
+        "getCategory": {
+          "description": "Bad Request",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message returned from server",
+                "example": "Category or menu not found"
+              }
+            }
+          }
+        },
+        "siteid": {
+          "description": "Bad Request",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message returned from server",
+                "example": "Invalid email"
+              }
+            }
+          }
+        },
+        "createorder": {
+          "description": "Bad Request",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "example": "Previous order have not been completed"
+              },
+              "orderInfo": {
+                "$ref": "#/components/fields/orderInfo"
+              }
+            }
+          }
+        },
+        "updateorder": {
+          "description": "Bad Request",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message returned from server",
+                "example": "Order not found"
+              }
+            }
+          }
+        },
+        "paidorder": {
+          "description": "Bad Request",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "message": {
+                "type": "string",
+                "description": "Error message returned from server",
+                "example": "Order not found"
+              }
+            }
+          }
+        }
+      },
+      "401": {
+        "description": "Enter the incorrect token",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "type": "string",
+              "description": "Error message returned from server",
+              "example": "Unauthorized"
+            }
+          }
+        }
+      },
+      "403": {
+        "description": "Forbidden",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "string",
+              "description": "Error message returned from server",
+              "example": "Invalid Token"
+            }
+          }
+        }
+      },
+      "500": {
+        "description": "Internal server error, unable to complete request",
+        "schema": {
+          "type": "object",
+          "properties": {
+            "error": {
+              "type": "string",
+              "description": "Error message returned from server",
+              "example": "Internal Server Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/user/register": {
+      "post": {
+        "summary": "Send registration request for a new user",
+        "tags": [
+          "User Auth"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AuthRegisterBody"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200/Token"
+          },
+          "400": {
+            "$ref": "#/components/responses/400/register"
+          }
+        }
+      }
+    },
+    "/user/login": {
+      "post": {
+        "summary": "Send login request for a user",
+        "tags": [
+          "User Auth"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AuthLoginBody"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200/Token"
+          },
+          "400": {
+            "$ref": "#/components/responses/400/login"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/user/adminpin": {
+      "post": {
+        "summary": "Send login request for a admin",
+        "tags": [
+          "User Auth"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AuthAdminPinBody"
+          },
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200/adminpin"
+          },
+          "400": {
+            "$ref": "#/components/responses/400/adminpin"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/user/verifypassword": {
+      "post": {
+        "summary": "Verify Password",
+        "tags": [
+          "User Auth"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/VerifyPasswordBody"
+          },
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200/verifyPassword"
+          },
+          "400": {
+            "$ref": "#/components/responses/400/verifyPassword"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/user/profile": {
+      "get": {
+        "summary": "Get user's profile information",
+        "tags": [
+          "User Auth"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200/getProfile"
+          },
+          "400": {
+            "$ref": "#/components/responses/400/getProfile"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/user/profile/update": {
+      "patch": {
+        "tags": [
+          "User Auth"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/UpdateProfileBody"
+          },
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200/updateProfile"
+          },
+          "400": {
+            "$ref": "#/components/responses/400/getProfile"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/user/siteid": {
+      "get": {
+        "tags": [
+          "User Auth"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200/siteid"
+          },
+          "400": {
+            "$ref": "#/components/responses/400/siteid"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/menu/create": {
+      "post": {
+        "summary": "Create a new menu",
+        "tags": [
+          "Menu Management"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/MenuCreateBody"
+          },
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200/Create_menu"
+          },
+          "400": {
+            "$ref": "#/components/responses/400/Create_menu"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/menu/getmenu": {
+      "get": {
+        "summary": "Get menu",
+        "tags": [
+          "Menu Management"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "type": "string",
+            "required": true,
+            "description": "Numeric ID of the user to get; 6343c404adfe757095fddc17"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200/getMenu"
+          },
+          "400": {
+            "$ref": "#/components/responses/400/getMenu"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/menu/deleteitem": {
+      "delete": {
+        "summary": "Delete the dish and add it to the default category",
+        "tags": [
+          "Menu Management"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/deleteItemBody"
+          },
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200/deleteitem"
+          },
+          "400": {
+            "$ref": "#/components/responses/400/deleteitem"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/menu/category/add": {
+      "patch": {
+        "summary": "Add/Update category",
+        "tags": [
+          "Menu Management"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/addCategoryBody"
+          },
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200/addCategory"
+          },
+          "400": {
+            "$ref": "#/components/responses/400/Create_menu"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/menu/category/get": {
+      "get": {
+        "summary": "Get all categories",
+        "tags": [
+          "Menu Management"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200/getCategory"
+          },
+          "400": {
+            "$ref": "#/components/responses/400/getCategory"
+          }
+        }
+      }
+    },
+    "/menu/pos": {
+      "get": {
+        "summary": "Get POS Menu",
+        "tags": [
+          "Menu Management"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200/posmenu"
+          },
+          "400": {
+            "$ref": "#/components/responses/400/Create_menu"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/menu/edit": {
+      "patch": {
+        "summary": "Edit menu item",
+        "tags": [
+          "Menu Management"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/addCategoryBody"
+          },
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200/updatemenu"
+          },
+          "400": {
+            "$ref": "#/components/responses/400/deleteitem"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/order/create": {
+      "post": {
+        "summary": "Add new order",
+        "tags": [
+          "Order Management"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/createOrderBody"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200/createorder"
+          },
+          "400": {
+            "$ref": "#/components/responses/400/createorder"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/order/update": {
+      "patch": {
+        "summary": "Update order item",
+        "tags": [
+          "Order Management"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/updateOrderBody"
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200/updateorder"
+          },
+          "400": {
+            "$ref": "#/components/responses/400/updateorder"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/order/status/paid": {
+      "post": {
+        "summary": "Update order item",
+        "tags": [
+          "Order Management"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/paidOrderBody"
+          },
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200/paidorder"
+          },
+          "400": {
+            "$ref": "#/components/responses/400/paidorder"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/order/status/finishone": {
+      "post": {
+        "summary": "Finish one order",
+        "tags": [
+          "Order Management"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/paidOrderBody"
+          },
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200/finshoneorder"
+          },
+          "400": {
+            "$ref": "#/components/responses/400/paidorder"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/order/get/one": {
+      "get": {
+        "summary": "Get one order",
+        "tags": [
+          "Order Management"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "siteId",
+            "type": "string",
+            "required": true,
+            "description": "sitedID to get; 6344d3ae861de146d6695447"
+          },
+          {
+            "in": "query",
+            "name": "tableNumber",
+            "type": "string",
+            "required": true,
+            "description": "table number to get; 7"
+          },
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200/getoneorder"
+          },
+          "400": {
+            "$ref": "#/components/responses/400/paidorder"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/order/get/current": {
+      "get": {
+        "summary": "Get current order",
+        "tags": [
+          "Order Management"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "siteId",
+            "type": "string",
+            "required": true,
+            "description": "sitedID to get; 6344d3ae861de146d6695447"
+          },
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200/getoneorder"
+          },
+          "400": {
+            "$ref": "#/components/responses/400/paidorder"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/order/get/unpaid": {
+      "get": {
+        "summary": "Get unpaid order",
+        "tags": [
+          "Order Management"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "siteId",
+            "type": "string",
+            "required": true,
+            "description": "sitedID to get; 6344d3ae861de146d6695447"
+          },
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200/getoneorder"
+          },
+          "400": {
+            "$ref": "#/components/responses/400/paidorder"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/order/get/completed": {
+      "get": {
+        "summary": "Get completed order",
+        "tags": [
+          "Order Management"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "siteId",
+            "type": "string",
+            "required": true,
+            "description": "sitedID to get; 63395c6523937d828468ecd3"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "type": "string",
+            "required": true,
+            "description": "page to get; 1"
+          },
+          {
+            "in": "query",
+            "name": "dateStart",
+            "type": "string",
+            "required": true,
+            "description": "dateStart to get; 2022-11-06"
+          },
+          {
+            "in": "query",
+            "name": "dateEnd",
+            "type": "string",
+            "required": true,
+            "description": "dateEnd to get; 2022-11-06"
+          },
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200/getoneorder"
+          },
+          "400": {
+            "$ref": "#/components/responses/400/paidorder"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/admin/sales": {
+      "get": {
+        "summary": "Get sales data",
+        "tags": [
+          "Site Management"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Authorization"
+          }
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/200/getsite"
+          },
+          "400": {
+            "$ref": "#/components/responses/400/paidorder"
+          },
+          "401": {
+            "$ref": "#/components/responses/401"
+          }
+        }
+      }
+    }
+  }
+}
