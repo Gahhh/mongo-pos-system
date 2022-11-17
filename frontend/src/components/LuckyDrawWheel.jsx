@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { SlotMachine } from '@lucky-canvas/react'
 import { Button } from 'antd';
-
+import noImage from '../assets/No_image_available.png';
 const styles = {
   container: {
     width: '100%',
@@ -30,9 +30,10 @@ const LuckyDrawWheel = (props) => {
   const selectionList = menuList.map((item) => {
     return {
       imgs: [{
-        src: item.thumbnail,
+        src: item.thumbnail ? item.thumbnail : noImage,
         width: 180,
         height: 150,
+        alt: noImage
       }],
       fonts: [{
         text: item.itemName,
