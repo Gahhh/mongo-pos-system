@@ -17,7 +17,7 @@ import { getBase64 } from '../utils/utilsFunctions';
 import { countryList } from '../config/translate';
 import ReactCountryFlag from 'react-country-flag';
 import { uploadFile, getPreSignedUrl } from '../utils/awsService';
-import noImage from '../assets/No_image_available.png'
+import { noImage } from '../assets/noImage.js';
 
 const { Content } = Layout;
 const options = dietaryOption.map((item) => {
@@ -132,8 +132,7 @@ const CreateMenuItem = () => {
       const url = await getPreSignedUrl(awsRes);
       values.thumbnail = url;
     } else {
-      const photoUrl = await getBase64(noImage);
-      values.thumbnail = photoUrl;
+      values.thumbnail = noImage;
     }
     const response = await addMenuItemRequest(values);
     const responseInfo = await response.json();
