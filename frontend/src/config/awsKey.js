@@ -1,6 +1,6 @@
-
+// The api key has been deleted for security reason
 export const awsKey = {
-  accessKeyId: "AKIAZO7EI4JLPFP53UPP",
-  secretAccessKey: "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",
+  accessKeyId: "******************",
+  secretAccessKey: "********************",
   region: "ap-southeast-2",
 }
