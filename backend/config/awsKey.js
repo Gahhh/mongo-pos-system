@@ -1,11 +1,13 @@
 
+// The api key has been deleted for security reason
+
 export const awsKey = {
   "s3key": {
-    accessKeyId: "AKIAZO7EI4JLPFP53UPP",
-    secretAccessKey: "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"},
+    accessKeyId: "***",
+    secretAccessKey: "***"},
   "translateKey": {
-    accessKeyId: "AKIAZO7EI4JLD7JPKMFN",
-    secretAccessKey: "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",
+    accessKeyId: "***",
+    secretAccessKey: "***",
     region: "ap-southeast-2"
   }
 }
