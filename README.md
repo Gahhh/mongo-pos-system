@@ -1,3 +1,16 @@
+# Sample Account and Cloud Access
+
+We have created an account with sample data:
+
+**Account name**: mongo@admin.com   
+**Account password**: qwer   
+**Admin Pin**: 123   
+
+We also have deployed the project on AWS server:
+
+**Frontend application**: [Click here](https://production.d3rtjtn92vn19k.amplifyapp.com/)   
+**Backend server**: [Click here](https://d2ny6ajz2dvgp0.cloudfront.net)
+
 # First time setup
 
 We choose the Lubuntu 20.41 environment to test and run our project. The following steps are only for setup on Lubuntu 20.41, and only need to setup once.
@@ -165,16 +178,3 @@ To create a production build, use yarn build.
 webpack compiled successfully
 ------------------------------------------------
 ```
-
-# Sample Account and Cloud Access
-
-We have created an account with sample data:
-
-**Account name**: mongo@admin.com   
-**Account password**: qwer   
-**Admin Pin**: 123   
-
-We also have deployed the project on AWS server:
-
-**Frontend application**: [Click here](https://production.d3rtjtn92vn19k.amplifyapp.com/)   
-**Backend server**: [Click here](https://d2ny6ajz2dvgp0.cloudfront.net)
