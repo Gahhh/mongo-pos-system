@@ -1,0 +1,20 @@
+version: 1
+applications:
+  - frontend:
+      phases:
+        # IMPORTANT - Please verify your build commands
+        preBuild:
+          commands:
+            - yarn install
+        build:
+          commands: 
+            - yarn run build  
+      artifacts:
+        # IMPORTANT - Please verify your build output directory
+        baseDirectory: build
+        files:
+          - '**/*'
+      cache:
+        paths:
+          -node_modules/**/*
+    appRoot: frontend
